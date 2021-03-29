@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="video.css">
+	<link rel="stylesheet" href="video_range.css">
+	<script src="video.js" defer></script>
+	<title>Document</title>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="cover"></div>
+		<div class="video_wrapper">
+			<div class="pause_play">
+				<div class="pauseVideo">
+					<svg width="40" height="40">
+						<polyline style="fill:#fff" points="0 0, 40 20, 0 40, 0 0"/>
+					</svg>
+				</div>
+				<div class="playVideo">
+					<svg width="40" height="40">
+						<polyline style="fill:#fff" points="0 0, 14 0, 14 40, 0 40, 0 0"/>
+						<polyline style="fill:#fff" points="26 0, 40 0, 40 40, 26 40, 26 0"/>
+					</svg>
+				</div>
+			</div>
+
+			<div class="menu_wrapper">
+				<h1>Instruction</h1>
+				<ul>
+					<li>Click/tap on 'EF Button' (the Ring Toggle Button at the top left corner) to toggle video name from ellipsis to full name and vice versa.</li>
+					<li>Click/tap on 'SH Button' (the Ring Toggle Button at the top right corner) to toggle video name from hidden to visible and vice versa.</li>
+					<li>Click/tap on 'Add Button' (the Arrow Down Button at the top right corner) to add a Video</li>
+					<li>Drag and drop a Video unto the Video Frame</li>
+				</ul>
+				<div id="copyRight">
+					<p>All Right Reserved!</p>
+					<p>Inedu Mozey</p>
+					<p>&copy; <span id="year"></span></p>
+				</div>
+				<div class="close_menu">
+					<svg id="close_menu_svg" width="15" height="15">
+						<polyline id="close_menu_svg_polylines" points="2 0, 15 13, 13 15, 0 2, 2 0"/>
+						<polyline id="close_menu_svg_polylines" points="0 13, 13 0, 15 2, 2 15, 0 13"/>
+					</svg>
+				</div>
+			</div>
+
+			<div class="videoInfo">
+				<div class="show_menu">
+					<svg id="show_menu_svg" width="20" height="15">
+						<polyline id="show_menu_svg_polylines" points="2.5 1.25, 17.5 1.25, 17.5 3.75, 2.5 3.75, 2.5 1.25"/>
+						<polyline id="show_menu_svg_polylines" points="2.5 6.25, 17.5 6.25, 17.5 8.75, 2.5 8.75, 2.5 6.25"/>
+						<polyline id="show_menu_svg_polylines" points="2.5 11.25, 17.5 11.25, 17.5 13.75, 2.5 13.75, 2.5 11.25"/>
+					</svg>
+				</div>
+				<div class="toggle_full_name"></div>
+				<div class="video_name"></div>
+				<div class="title">Custom Video Player</div>
+				<small class="day"></small>
+				<div class="toggle_hide_name"></div>
+				<div class="add_video_btn">
+					<label class="label_add_video" for="videoFile">
+						<svg id="label_add_video_svg" width="20" height="15">
+							<polyline id="label_add_video_svg_polylines" points="2.5 1.875, 17.5 1.875, 10 13.125, 2.5 1.875"/>
+						</svg>
+					</label>
+					<input type="file" id="videoFile" accept="video/*">
+				</div>
+			</div>
+
+			<div class="video_panel">
+				<div class="video_icon">
+					<small class="moses">
+						<ul><li>M</li></ul>
+						<ul><li>O</li></ul>
+						<ul><li>Z</li></ul>
+						<ul><li>E</li></ul>
+						<ul><li>Y</li></ul>
+					</small>
+					<svg id="video_icon_svg" width="200" height="200">
+						<circle id="video_icon_svg_outer_circle" cx="100" cy="100" r="85"/>
+						<circle style="fill:#000" id="video_icon_svg_inner_circle" cx="100" cy="100" r="55"/>
+						<polyline id="video_icon_svg_polyline" points="80 60, 140 100, 80 140, 80 60"/>
+					</svg>
+				</div>
+				<video></video>
+			</div>
+		</div>
+
+		<div class="control">
+			<div class="range_time">
+				<div class="time time_rem">00:00:00</div>
+				<div class="range">
+					<input type="range" class="time_range" min="0" max="100" value="0">
+				</div>
+				<div class="time time_gone">00:00:00</div>
+			</div>
+
+			<div class="control_parameters">
+				<div class="ctrl rewind">
+					<svg id="rewind_svg" width="30" height="25">
+						<polyline id="rewind_svg_polylines" points="5 5.555, 10 5.555, 10 20.564, 5 20.564, 5 5.555"/>
+						<polyline id="rewind_svg_polylines" points="10 12.5, 17.5 5.555, 17.5 20.564, 10 12.5"/>
+						<polyline id="rewind_svg_polylines" points="17.5 12.5, 25 5.555, 25 20.564, 17.5 12.5"/>		
+					</svg>
+				</div>
+
+				<div class="p_p play_pause">
+					<div class="pDiv playDiv pauseActive">
+						<div class="pause">
+							<svg id="pause_svg" width="30" height="25">
+								<polyline id="pause_svg_polylines" points="9.436 5.555, 20.564 12.5, 9.436 19.444, 9.436 5.555"/>
+							</svg>
+						</div>
+
+						<div class="playing">
+							<svg id="playing_svg" width="30" height="25">
+								<polyline id="playing_svg_polylines" points="9.436 5.555, 13.333 5.555, 13.333 19.444, 9.436 19.444, 9.436 5.555"/>
+
+								<polyline id="playing_svg_polylines" points="16.66 5.555, 20.564 5.555, 20.564 19.444, 16.66 19.444, 16.66 5.555"/>
+							</svg>
+						</div>
+					</div>
+
+					<div class="pDiv stopDiv">
+						<svg  id="stopDiv_svg" width="30" height="25">
+							<polyline id="stopDiv_svg_polylines" points="9.436 5.555, 20.564 5.555, 20.564 19.444, 9.436 19.444, 9.436 5.555"/>
+						</svg>
+					</div>
+				</div>
+
+				<div class="ctrl forward">
+					<svg id="forward_svg" width="30" height="25">
+						<polyline id="forward_svg_polylines" points="5 5.555, 10 5.555, 10 20.564, 5 20.564, 5 5.555"/>
+						<polyline id="forward_svg_polylines" points="10 12.5, 17.5 5.555, 17.5 20.564, 10 12.5"/>
+						<polyline id="forward_svg_polylines" points="17.5 12.5, 25 5.555, 25 20.564, 17.5 12.5"/>		
+					</svg>
+				</div>
+			</div>
+			<small class="date"></small>
+			<small class="dig_time"></small>
+		</div>
+	</div>
+</body>
+</html>
